@@ -68,6 +68,7 @@
 - QA found that native `<details>` navigation remained open after selecting a mobile anchor. The menu is now a small Client Component that closes itself after internal navigation or locale/CTA selection.
 - Local API tests cover invalid JSON, invalid fields, honeypot absorption, missing Supabase configuration and oversized request bodies. See `TESTING.md` for the status matrix.
 - Resend 6.12.2 initially matched the parent project but introduced three moderate dependency advisories. The standalone site uses Resend 6.22.0 instead; the final production audit returns zero vulnerabilities.
+- Locale switching originally used `next/link`. Next.js 16 preserves scroll when the next page remains visible, which moved a top-of-page `/en` visitor to approximately `scrollY=7288` on `/vi`. Language switches now use native document navigation so every locale opens at the top; in-page section links continue to use normal anchor scrolling.
 
 ### Known next iterations
 

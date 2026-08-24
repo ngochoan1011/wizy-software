@@ -43,6 +43,7 @@
 - [x] ✅ Add security response headers and keep `/api/` out of crawl paths.
 - [x] ✅ Run local lint and a warning-free production build on Next.js 16.3.2.
 - [x] ✅ Complete desktop and 390×844 mobile browser QA for both locales; correct the mobile-menu close behavior found during testing.
+- [x] ✅ Fix locale switching so EN/VI navigation always starts at the top instead of preserving an unrelated long-page scroll position.
 - [x] ✅ Verify root redirect, public crawl files, OG response, lead API validation paths and zero production dependency advisories.
 - [ ] ⏳ Validate production HTML, canonical/hreflang, JSON-LD, OG image, sitemap, robots and form behavior after deployment.
 

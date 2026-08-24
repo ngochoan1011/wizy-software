@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useRef } from "react";
 import type { Locale } from "@/lib/i18n";
 
@@ -31,9 +30,9 @@ export function MobileMenu({ cta, languageName, locale, nav, otherLocale }: Mobi
             </a>
           ))}
         </nav>
-        <Link href={`/${otherLocale}`} hrefLang={otherLocale} onClick={closeMenu}>
+        <a href={`/${otherLocale}`} hrefLang={otherLocale} onClick={closeMenu}>
           {languageName}
-        </Link>
+        </a>
         <a className="button button-primary" href="#contact" onClick={closeMenu}>
           {cta}
         </a>

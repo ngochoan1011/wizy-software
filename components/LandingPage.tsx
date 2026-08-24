@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
 import { alternateLocale } from "@/lib/i18n";
 import { Logo } from "@/components/Logo";
@@ -24,9 +23,9 @@ export function LandingPage({ locale }: { locale: Locale }) {
             {content.nav.map((item) => <a href={item.href} key={item.href}>{item.label}</a>)}
           </nav>
           <div className="header-actions">
-            <Link className="locale-link" href={`/${otherLocale}`} hrefLang={otherLocale} aria-label={content.switchLabel}>
+            <a className="locale-link" href={`/${otherLocale}`} hrefLang={otherLocale} aria-label={content.switchLabel}>
               {content.languageName}
-            </Link>
+            </a>
             <a className="button button-small button-primary" href="#contact">{content.headerCta}</a>
           </div>
           <MobileMenu

@@ -28,6 +28,8 @@ Tested with the local Next.js development server in the in-app Chromium browser.
 | English mobile at 390×844 | ✅ No horizontal overflow; mobile navigation replaces desktop navigation |
 | Vietnamese mobile at 390×844 | ✅ Correct copy, `lang="vi-CA"`, canonical and alternates |
 | Mobile anchor navigation | ✅ Menu closes and target section aligns at the top |
+| Desktop locale switch | ✅ `/en` → `/vi` resets from the reproduced `scrollY=7288` defect to `scrollY=0` |
+| Mobile locale switch | ✅ Native locale navigation closes the menu and opens the alternate locale at the top |
 | Contact form | ✅ 13 labelled controls, 8 required controls and responsive single-column layout |
 | Browser console | ✅ No warnings or errors recorded |
 
