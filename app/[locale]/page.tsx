@@ -49,12 +49,7 @@ export default async function SoftwareLandingPage({ params }: PageProps<"/[local
         url: pageUrl,
         provider: { "@id": `${SITE_URL}/#organization` },
         areaServed: { "@type": "Country", name: "Canada" },
-        serviceType: [
-          "Product Discovery",
-          "Custom Software Development",
-          "Dedicated Product Teams",
-          "Software Modernization and Maintenance",
-        ],
+        serviceType: content.services.items.map((service) => service.title),
       },
       {
         "@type": "FAQPage",

@@ -84,3 +84,15 @@
 - The table is locked down (RLS on, no `anon`/`authenticated` grants). This site reads it through the existing server-only service client (`lib/supabase/posts.ts`); the wizy.ca admin writes it through its own service client.
 - Read failures (missing table, missing env) are logged and render an empty blog instead of failing the build.
 - Migration: `../../supabase/create-software-posts.sql`.
+
+## Blog preview and publication (2026-11-14)
+
+- Blog Software in Wizy Admin opens the editor's current EN and VI values in a preview tab. It transfers the editor snapshot directly between the two browser windows after checking both origins and the source window. Reloading the preview requires opening it again from the editor.
+- The preview uses the same article, Markdown rendering, typography and navigation as the public blog. The preview route has no article data on the server, no sitemap entry, and is marked noindex.
+- Public article details read published posts at request time so an earlier draft URL lookup cannot cache a 404 past publication. Locale validation still rejects unsupported languages. Blog indexes and sitemap retain their existing revalidation intervals.
+
+## Bilingual landing page AEO (2026-11-14)
+
+- The opening answer names the service, Canadian market and Wizy–HiTek roles. Engagement cards describe fit and concrete outputs, and the pharmacy example links to A01 in the visitor's locale.
+- The delivery plan is labelled as an illustration. Repository, IP, support and contracting descriptions refer to the scope agreed for each project. FAQ and Service JSON-LD are generated from landing-page copy.
+- Canonical, hreflang, sitemap and the lead-submission contract retain their existing behavior. Search Console indexing, growth baselines and analytics verification are tracked separately from public HTML checks.

@@ -25,15 +25,14 @@ export function LandingPage({ locale }: { locale: Locale }) {
               <p className="eyebrow"><span />{content.hero.eyebrow}</p>
               <h1 id="hero-title">
                 {content.hero.titleBefore}{" "}
-                <em>{content.hero.titleHighlight}</em>{" "}
-                {content.hero.titleAfter}
+                <em>{content.hero.titleHighlight}</em>
               </h1>
               <p className="hero-description">{content.hero.description}</p>
               <div className="hero-buttons">
                 <a className="button button-primary" href="#contact">
                   {content.hero.primaryCta}<Icon name="arrow" size={19} />
                 </a>
-                <a className="button button-ghost" href="#model">{content.hero.secondaryCta}</a>
+                <a className="button button-ghost" href="#services">{content.hero.secondaryCta}</a>
               </div>
               <p className="hero-note"><Icon name="check" size={17} />{content.hero.note}</p>
             </div>
@@ -83,7 +82,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
           </div>
         </section>
 
-        <section className="trust-strip" aria-label={locale === "vi" ? "Cam kết delivery" : "Delivery commitments"}>
+        <section className="trust-strip" aria-label={locale === "vi" ? "Thông tin hợp tác" : "Engagement overview"}>
           <div className="shell trust-grid">
             {content.trust.map((item, index) => (
               <div className="trust-item" key={item.title}>
@@ -179,6 +178,12 @@ export function LandingPage({ locale }: { locale: Locale }) {
                 </article>
               ))}
             </div>
+            <aside className="service-resource">
+              <p>{content.services.resourceText}</p>
+              <a className="text-link" href={`/${locale}/blog/choose-pharmacy-management-software-ontario`}>
+                {content.services.resourceLabel}<Icon name="arrow" size={16} />
+              </a>
+            </aside>
           </div>
         </section>
 

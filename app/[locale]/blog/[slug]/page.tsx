@@ -1,23 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { Icon } from "@/components/Icon";
-import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
-import { siteContent } from "@/content/site-content";
-import { formatPostDate } from "@/lib/blog-seo";
+import { BlogArticle } from "@/components/BlogArticle";
 import { alternateLocale, isLocale, type Locale } from "@/lib/i18n";
 import { serializeJsonLd, SITE_NAME, SITE_URL } from "@/lib/seo";
-import { getPublishedPost, getPublishedSlugs } from "@/lib/supabase/posts";
+import { getPublishedPost } from "@/lib/supabase/posts";
 
-export const revalidate = 300;
-// New posts published after the build are rendered on first request.
-export const dynamicParams = true;
-
-export async function generateStaticParams() {
-  const slugs = await getPublishedSlugs();
-  return slugs.map(({ slug }) => ({ slug }));
-}
+// Resolve the published status on each visit, including URLs opened before publication.
+export const dynamic = "force-dynamic";
 
 function postUrls(slug: string, hasVietnamese: boolean) {
   const en = `${SITE_URL}/en/blog/${slug}`;
@@ -70,7 +59,6 @@ export default async function BlogPostPage({ params }: PageProps<"/[locale]/blog
   const post = await getPublishedPost(slug, locale);
   if (!post) notFound();
 
-  const copy = siteContent[locale].blog;
   const urls = postUrls(slug, post.hasVietnamese);
   const otherLocale = alternateLocale(locale);
   const jsonLd = {
@@ -92,68 +80,7 @@ export default async function BlogPostPage({ params }: PageProps<"/[locale]/blog
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
-      <SiteHeader locale={locale} alternateHref={`/${otherLocale}/blog/${slug}`} />
-      <main id="main-content" className="blog-page">
-        <article>
-          <header className="post-hero">
-            <div className="shell post-shell">
-              <a className="post-back" href={`/${locale}/blog`}>← {copy.backToBlog}</a>
-              <p className="blog-meta">
-                <time dateTime={post.publishedAt}>{formatPostDate(post.publishedAt, locale)}</time>
-                <span>·</span>
-                <span>{post.readingTime} {copy.minRead}</span>
-              </p>
-              <h1>{post.title}</h1>
-              {post.excerpt && <p className="post-excerpt">{post.excerpt}</p>}
-              {post.isFallback && copy.fallbackNotice && <p className="post-fallback">{copy.fallbackNotice}</p>}
-            </div>
-          </header>
-
-          {post.coverImageUrl && (
-            <div className="shell post-cover">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={post.coverImageUrl} alt="" />
-            </div>
-          )}
-
-          <div className="shell post-shell">
-            <div className="prose" lang={locale === "vi" && !post.isFallback ? "vi" : "en"}>
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                components={{
-                  a: ({ href, children }) => {
-                    const external = href?.startsWith("http") && !href.startsWith(SITE_URL);
-                    return (
-                      <a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
-                        {children}
-                      </a>
-                    );
-                  },
-                  // eslint-disable-next-line @next/next/no-img-element
-                  img: ({ src, alt }) => <img src={typeof src === "string" ? src : undefined} alt={alt ?? ""} loading="lazy" />,
-                }}
-              >
-                {post.content}
-              </ReactMarkdown>
-            </div>
-
-            {post.tags.length > 0 && (
-              <ul className="post-tags">
-                {post.tags.map((tag) => <li key={tag}>{tag}</li>)}
-              </ul>
-            )}
-
-            <aside className="post-cta">
-              <h2>{copy.ctaTitle}</h2>
-              <p>{copy.ctaText}</p>
-              <a className="button button-primary" href={`/${locale}#contact`}>
-                {siteContent[locale].headerCta}<Icon name="arrow" size={19} />
-              </a>
-            </aside>
-          </div>
-        </article>
-      </main>
-      <SiteFooter locale={locale} />
+      <BlogArticle locale={locale} post={post} alternateHref={`/${otherLocale}/blog/${slug}`} />
     </>
   );
 }

@@ -70,3 +70,21 @@ until the target project, migration and server-only credentials are available.
 - [x] ✅ Shared `SiteHeader`/`SiteFooter` (`components/SiteChrome.tsx`) so blog pages reuse the landing chrome; "Blog" added to the navigation.
 - [x] ✅ Posts are managed in the wizy.ca admin at `/vi/admin?tab=software-posts` (parent repo: `SoftwarePostsManager.tsx`, `/api/admin/software-posts`).
 - [ ] ⏳ Run `../../supabase/create-software-posts.sql` in the shared wizyca Supabase project.
+
+## Blog preview and publication (2026-11-14)
+
+- [x] Added EN/VI preview handoff from the Wizy Admin editor and shared article layout.
+- [x] Changed public article pages to read published status at request time.
+- [x] Verified both A01 production article URLs return 200 and display localized content.
+- [x] Verified the CMS opens each locale in the production preview and switches to Vietnamese within the preview tab.
+
+## Bilingual landing page AEO (2026-11-14)
+
+- [x] Updated EN and VI landing copy, calls to action, engagement descriptions, FAQs, metadata and visible-content-backed structured data.
+- [x] Added localized links to A01 from both service sections.
+- [x] Deployed to software.wizy.ca and verified HTTP 200, localized H1s, self-canonicals, reciprocal hreflang, Open Graph image, crawl files and all ten rendered FAQ pairs per locale against JSON-LD.
+- [x] Verified desktop CTA and locale navigation, narrow-layout menu behaviour and form validation without creating a lead.
+- [x] Verified localized links back to the service section within the published A01 article bodies.
+- [x] Verified Search Console indexing for EN and VI and recorded the 28-day Canada baseline in the AEO plan.
+- [x] Verified successful local lead API responses and five attribution fields against a database stub.
+- [ ] GA4 property wizy.ca has no software.wizy.ca hostname data. Configure collection before verifying a successful submission in GA4.

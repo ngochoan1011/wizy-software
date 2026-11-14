@@ -8,12 +8,12 @@ const seoCopy = {
   en: {
     title: "Custom Software Development in Canada | Wizy Software",
     description:
-      "Canadian-led custom software delivery for web, mobile, MVPs, product pods and modernization—backed by a proven engineering team in Vietnam.",
+      "Wizy Software helps Canadian businesses scope, build and modernize web, mobile and internal software, with HiTek Software as our engineering partner.",
   },
   vi: {
-    title: "Phát triển phần mềm tại Canada | Wizy Software",
+    title: "Phát triển phần mềm theo yêu cầu tại Canada | Wizy Software",
     description:
-      "Dịch vụ phát triển phần mềm do Wizy dẫn dắt tại Canada, kết hợp đội ngũ kỹ thuật tại Việt Nam cho web, mobile, MVP và hiện đại hóa hệ thống.",
+      "Wizy phụ trách tại Canada, HiTek hỗ trợ kỹ thuật từ Việt Nam. Làm rõ yêu cầu, xây dựng và nâng cấp ứng dụng web, di động và hệ thống nội bộ.",
   },
 } as const;
 
@@ -47,7 +47,7 @@ export function pageMetadata(locale: Locale): Metadata {
           url: "/opengraph-image",
           width: 1200,
           height: 630,
-          alt: "Wizy Software — Canadian-led software delivery",
+          alt: locale === "vi" ? "Wizy Software — Phát triển phần mềm tại Canada" : "Wizy Software — Canadian-led software delivery",
         },
       ],
     },

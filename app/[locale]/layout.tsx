@@ -22,8 +22,6 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export const dynamicParams = false;
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 };

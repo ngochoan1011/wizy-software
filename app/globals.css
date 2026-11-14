@@ -972,7 +972,8 @@ svg {
 }
 
 .service-card {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   min-height: 390px;
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -1008,18 +1009,32 @@ svg {
 
 .service-card ul {
   margin-top: 22px;
+  margin-bottom: 18px;
 }
 
 .service-card small {
-  position: absolute;
-  left: 31px;
-  right: 31px;
-  bottom: 27px;
+  margin-top: auto;
   border-top: 1px solid var(--line);
   padding-top: 13px;
   color: #7c6535;
   font-size: 9px;
   font-weight: 750;
+}
+
+.service-resource {
+  margin-top: 24px;
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--white);
+}
+
+.service-resource p {
+  margin: 0 0 8px;
+}
+
+.service-resource .text-link {
+  font-size: 0.875rem;
 }
 
 .section-fit {
@@ -2079,11 +2094,6 @@ svg {
     padding: 25px;
   }
 
-  .service-card small {
-    left: 25px;
-    right: 25px;
-  }
-
   .assurance-list article {
     grid-template-columns: 32px 45px 1fr;
     gap: 11px;
@@ -2588,3 +2598,11 @@ svg {
   }
 }
 
+
+.blog-preview-notice {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  background: var(--surface, #f3eedf);
+  text-align: center;
+  font-size: 0.875rem;
+}
