@@ -10,6 +10,7 @@ export const siteContent = {
       { href: "#process", label: "Process" },
       { href: "#governance", label: "Governance" },
       { href: "#faq", label: "FAQ" },
+      { href: "/blog", label: "Blog" },
     ],
     headerCta: "Discuss your project",
     hero: {
@@ -323,6 +324,20 @@ export const siteContent = {
         error: "We could not submit the form right now. Please email partners@wizy.ca instead.",
       },
     },
+    blog: {
+      eyebrow: "Insights",
+      title: "Wizy Software Blog",
+      description:
+        "Practical notes on scoping, building and running custom software with a Canadian-led, Vietnam-backed delivery team.",
+      empty: "No articles yet. Check back soon.",
+      readMore: "Read article",
+      minRead: "min read",
+      backToBlog: "All articles",
+      fallbackNotice: "",
+      ctaTitle: "Have a software project in mind?",
+      ctaText: "Tell us what you are building. A Canadian lead will reply within one business day.",
+      by: "By",
+    },
     footer: {
       statement: "Canadian-led software delivery, backed by engineering depth in Vietnam.",
       disclosure: "Wizy Software is a service line of Wizy. HiTek Software is presented as an engineering delivery partner; exact legal and delivery responsibilities are confirmed in each client agreement.",
@@ -341,6 +356,7 @@ export const siteContent = {
       { href: "#process", label: "Quy trình" },
       { href: "#governance", label: "Quản trị" },
       { href: "#faq", label: "Hỏi đáp" },
+      { href: "/blog", label: "Blog" },
     ],
     headerCta: "Trao đổi dự án",
     hero: {
@@ -557,6 +573,20 @@ export const siteContent = {
         successText: "Cảm ơn bạn. Wizy sẽ review thông tin và phản hồi bằng một bước tiếp theo thực tế.",
         error: "Hiện chưa thể gửi form. Vui lòng email trực tiếp partners@wizy.ca.",
       },
+    },
+    blog: {
+      eyebrow: "Góc chia sẻ",
+      title: "Blog Wizy Software",
+      description:
+        "Kinh nghiệm thực tế về xác định phạm vi, xây dựng và vận hành phần mềm với đội ngũ do Canada dẫn dắt, kỹ thuật tại Việt Nam.",
+      empty: "Chưa có bài viết. Hãy quay lại sau nhé.",
+      readMore: "Đọc bài",
+      minRead: "phút đọc",
+      backToBlog: "Tất cả bài viết",
+      fallbackNotice: "Bài này hiện chỉ có bản tiếng Anh.",
+      ctaTitle: "Bạn đang có dự án phần mềm?",
+      ctaText: "Hãy kể cho chúng tôi điều bạn đang xây dựng. Đại diện Wizy tại Canada sẽ phản hồi trong một ngày làm việc.",
+      by: "Tác giả",
     },
     footer: {
       statement: "Software delivery do Canada dẫn dắt, được hỗ trợ bởi chiều sâu kỹ thuật tại Việt Nam.",

@@ -1,14 +1,11 @@
 import type { Locale } from "@/lib/i18n";
-import { alternateLocale } from "@/lib/i18n";
-import { Logo } from "@/components/Logo";
 import { Icon } from "@/components/Icon";
 import { LeadForm } from "@/components/LeadForm";
-import { MobileMenu } from "@/components/MobileMenu";
+import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { siteContent } from "@/content/site-content";
 
 export function LandingPage({ locale }: { locale: Locale }) {
   const content = siteContent[locale];
-  const otherLocale = alternateLocale(locale);
 
   return (
     <>
@@ -16,27 +13,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
         {locale === "vi" ? "Đi đến nội dung chính" : "Skip to main content"}
       </a>
 
-      <header className="site-header">
-        <div className="shell header-inner">
-          <Logo locale={locale} />
-          <nav className="desktop-nav" aria-label="Primary navigation">
-            {content.nav.map((item) => <a href={item.href} key={item.href}>{item.label}</a>)}
-          </nav>
-          <div className="header-actions">
-            <a className="locale-link" href={`/${otherLocale}`} hrefLang={otherLocale} aria-label={content.switchLabel}>
-              {content.languageName}
-            </a>
-            <a className="button button-small button-primary" href="#contact">{content.headerCta}</a>
-          </div>
-          <MobileMenu
-            cta={content.headerCta}
-            languageName={content.languageName}
-            locale={locale}
-            nav={content.nav}
-            otherLocale={otherLocale}
-          />
-        </div>
-      </header>
+      <SiteHeader locale={locale} onLanding />
 
       <main id="main-content">
         <section className="hero" aria-labelledby="hero-title">
@@ -341,21 +318,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
         </section>
       </main>
 
-      <footer className="site-footer">
-        <div className="shell footer-top">
-          <Logo locale={locale} />
-          <p>{content.footer.statement}</p>
-          <div className="footer-links">
-            <a href="https://www.wizy.ca" target="_blank" rel="noreferrer">{content.footer.mainSite}</a>
-            <a href="https://hitek.com.vn/en/" target="_blank" rel="noreferrer">{content.footer.partnerSite}</a>
-            <a href={`https://www.wizy.ca/${locale}/privacy`} target="_blank" rel="noreferrer">{content.footer.privacy}</a>
-          </div>
-        </div>
-        <div className="shell footer-bottom">
-          <p>{content.footer.disclosure}</p>
-          <span>© {new Date().getFullYear()} Wizy. {content.footer.rights}</span>
-        </div>
-      </footer>
+      <SiteFooter locale={locale} />
     </>
   );
 }

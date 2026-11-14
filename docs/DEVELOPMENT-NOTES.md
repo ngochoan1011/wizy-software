@@ -77,3 +77,10 @@
 - Add CRM or webhook automation only if Wizy needs routing beyond the implemented Resend admin notification.
 - Add durable rate limiting if traffic or abuse warrants it; Vercel in-memory limiting was intentionally avoided because it is unreliable across serverless instances.
 - Consider a nonce-based CSP in a security-hardening pass. Current response headers cover framing, content sniffing, referrer and browser-permission controls without risking broken Next.js hydration.
+
+## Blog data source (2026-11-14)
+
+- Blog posts live in `public.software_posts` in the **same Supabase project as wizy.ca**, separate from wizy.ca's marketing `public.posts` so the two blogs never mix.
+- The table is locked down (RLS on, no `anon`/`authenticated` grants). This site reads it through the existing server-only service client (`lib/supabase/posts.ts`); the wizy.ca admin writes it through its own service client.
+- Read failures (missing table, missing env) are logged and render an empty blog instead of failing the build.
+- Migration: `../../supabase/create-software-posts.sql`.

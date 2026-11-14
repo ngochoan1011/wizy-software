@@ -5,13 +5,15 @@ import type { Locale } from "@/lib/i18n";
 
 type MobileMenuProps = {
   cta: string;
+  ctaHref?: string;
   languageName: string;
   locale: Locale;
   nav: readonly { href: string; label: string }[];
   otherLocale: Locale;
+  switchHref?: string;
 };
 
-export function MobileMenu({ cta, languageName, locale, nav, otherLocale }: MobileMenuProps) {
+export function MobileMenu({ cta, ctaHref = "#contact", languageName, locale, nav, otherLocale, switchHref }: MobileMenuProps) {
   const menuRef = useRef<HTMLDetailsElement>(null);
   const closeMenu = () => menuRef.current?.removeAttribute("open");
 
@@ -30,10 +32,10 @@ export function MobileMenu({ cta, languageName, locale, nav, otherLocale }: Mobi
             </a>
           ))}
         </nav>
-        <a href={`/${otherLocale}`} hrefLang={otherLocale} onClick={closeMenu}>
+        <a href={switchHref ?? `/${otherLocale}`} hrefLang={otherLocale} onClick={closeMenu}>
           {languageName}
         </a>
-        <a className="button button-primary" href="#contact" onClick={closeMenu}>
+        <a className="button button-primary" href={ctaHref} onClick={closeMenu}>
           {cta}
         </a>
       </div>

@@ -61,3 +61,12 @@
 Detailed command, HTTP and browser results are recorded in
 [`TESTING.md`](TESTING.md). A real Supabase insert remains intentionally pending
 until the target project, migration and server-only credentials are available.
+
+## Blog (2026-11-14)
+
+- [x] ✅ Add `/en/blog` and `/vi/blog` index pages plus `/[locale]/blog/[slug]` article pages (Markdown via `react-markdown` + GFM, ISR every 5 minutes, new slugs rendered on demand).
+- [x] ✅ English is the default; a post without a Vietnamese translation renders English on `/vi/...`, canonicalizes to the English URL and is left out of the `vi` sitemap/hreflang.
+- [x] ✅ `BlogPosting`/`Blog` JSON-LD, per-post metadata, sitemap entries for published posts.
+- [x] ✅ Shared `SiteHeader`/`SiteFooter` (`components/SiteChrome.tsx`) so blog pages reuse the landing chrome; "Blog" added to the navigation.
+- [x] ✅ Posts are managed in the wizy.ca admin at `/vi/admin?tab=software-posts` (parent repo: `SoftwarePostsManager.tsx`, `/api/admin/software-posts`).
+- [ ] ⏳ Run `../../supabase/create-software-posts.sql` in the shared wizyca Supabase project.
