@@ -1,6 +1,7 @@
 # Wizy Software Blog — Content Plan
 
 > Last updated: 2026-11-16
+> Status: 44 posts published, all with English and Vietnamese versions (Vietnamese added 2026-11-16).
 > Posts live in `public.software_posts` and are managed at `wizy.ca/vi/admin?tab=software-posts`.
 
 ## House format (AEO)
@@ -18,7 +19,7 @@
 
 Clusters: pharmacy operations (6), workflow automation and AI (8), choosing and contracting a partner (5), modernization (2), other operations (3).
 
-## Batch 2 — drafted 2026-11-16 (10 posts)
+## Batch 2 — published 2026-11-16 (10 posts)
 
 | # | Title | Slug |
 |---|---|---|
@@ -38,7 +39,7 @@ Publishing notes:
 - Publish #2 before or with #1 and #3 (they link to it). Publish #1 before or with #5 and #7.
 - #6 (privacy) and #7 (SR&ED) should be read by someone with legal/tax expertise first. #7 states that engineering performed outside Canada is not SR&ED-eligible.
 
-## Batch 3 — drafted 2026-11-16 (10 posts)
+## Batch 3 — published 2026-11-16 (10 posts)
 
 | # | Title | Slug | Why |
 |---|---|---|---|
