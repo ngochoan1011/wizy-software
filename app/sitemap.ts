@@ -4,7 +4,8 @@ import { getPublishedSlugs } from "@/lib/supabase/posts";
 
 const lastModified = new Date("2026-08-24T00:00:00-04:00");
 
-export const revalidate = 3600;
+// Rendered per request: the default build-time cache froze the post list, and scheduled posts must appear on their date.
+export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const languages = {

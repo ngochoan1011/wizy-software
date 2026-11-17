@@ -88,3 +88,9 @@ until the target project, migration and server-only credentials are available.
 - [x] Verified Search Console indexing for EN and VI and recorded the 28-day Canada baseline in the AEO plan.
 - [x] Verified successful local lead API responses and five attribution fields against a database stub.
 - [ ] GA4 property wizy.ca has no software.wizy.ca hostname data. Configure collection before verifying a successful submission in GA4.
+
+## Scheduled blog posts and sitemap refresh (2026-11-17)
+
+- [x] ✅ Posts with a future `published_at` stay hidden from the index, article pages and sitemap until that time.
+- [x] ✅ Sitemap renders per request; the cached build-time version had frozen the post list.
+- [x] ✅ Batch 2 and 3 posts (20) scheduled one per day from 2026-11-18, ordered so each post goes live after the posts it links to.

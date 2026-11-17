@@ -96,3 +96,9 @@
 - The opening answer names the service, Canadian market and Wizy–HiTek roles. Engagement cards describe fit and concrete outputs, and the pharmacy example links to A01 in the visitor's locale.
 - The delivery plan is labelled as an illustration. Repository, IP, support and contracting descriptions refer to the scope agreed for each project. FAQ and Service JSON-LD are generated from landing-page copy.
 - Canonical, hreflang, sitemap and the lead-submission contract retain their existing behavior. Search Console indexing, growth baselines and analytics verification are tracked separately from public HTML checks.
+
+## Scheduled publishing (2026-11-17)
+
+- A post is public when `status = 'published'` and `published_at <= now()`. Setting a future `published_at` on a published post schedules it; no cron job is needed because the index revalidates every 5 minutes and article pages and the sitemap read at request time.
+- `app/sitemap.ts` uses `dynamic = "force-dynamic"`. Metadata routes are cached by default in this Next.js version, and the build-time sitemap had stopped listing posts published after deploy.
+- Wizy Admin only sets `published_at` when a post has none, so editing a scheduled post keeps its date. "View on site" returns 404 until the scheduled time.

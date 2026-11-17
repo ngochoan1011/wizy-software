@@ -92,6 +92,7 @@ export const getPublishedPosts = cache(async (locale: Locale): Promise<BlogPost[
     .from("software_posts")
     .select(LIST_COLUMNS)
     .eq("status", "published")
+    .lte("published_at", new Date().toISOString())
     .order("published_at", { ascending: false })
     .limit(200);
   if (error) {
@@ -108,6 +109,7 @@ export const getPublishedPost = cache(async (slug: string, locale: Locale): Prom
     .from("software_posts")
     .select("*")
     .eq("status", "published")
+    .lte("published_at", new Date().toISOString())
     .eq("slug", slug)
     .maybeSingle();
   if (error) {
