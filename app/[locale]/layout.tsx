@@ -24,6 +24,8 @@ export function generateStaticParams() {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  // Bing Webmaster Tools ownership for https://software.wizy.ca/ (keep after verification).
+  verification: { other: { "msvalidate.01": "D83C03626CF0A8C635E74FC2E7276528" } },
 };
 
 export default async function LocaleLayout({
