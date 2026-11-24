@@ -101,4 +101,4 @@ until the target project, migration and server-only credentials are available.
 - [x] ✅ `dateModified`, `article:modified_time` and sitemap `lastmod` are never earlier than the publish date.
 - [x] ✅ `/llms.txt` lists published articles and revalidates hourly.
 - [x] ✅ Batch 4 posts (20) scheduled one per day 2026-12-08 → 2026-12-27, 14:00 UTC, ordered by link dependencies. Eight links between mutually linked pairs point one to four days ahead.
-- [ ] Submit the sitemap in Bing Webmaster Tools and confirm it in Search Console for the subdomain.
+- [x] ✅ 2026-11-24: `https://software.wizy.ca/` added and verified in Bing Webmaster Tools (`msvalidate.01` meta tag in `app/[locale]/layout.tsx`, keep it), sitemap submitted. Search Console (domain property wizy.ca) sitemap status Success; resubmitted.
