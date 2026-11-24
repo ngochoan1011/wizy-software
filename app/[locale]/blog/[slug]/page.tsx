@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogArticle } from "@/components/BlogArticle";
 import { alternateLocale, isLocale, type Locale } from "@/lib/i18n";
-import { serializeJsonLd, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { latestIsoDate, ORGANIZATION_JSON_LD, serializeJsonLd, SITE_NAME, SITE_URL } from "@/lib/seo";
 import { getPublishedPost } from "@/lib/supabase/posts";
 
 // Resolve the published status on each visit, including URLs opened before publication.
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/blog/[sl
       description: post.seoDescription,
       locale: locale === "vi" && !post.isFallback ? "vi_CA" : "en_CA",
       publishedTime: post.publishedAt,
-      modifiedTime: post.updatedAt,
+      modifiedTime: latestIsoDate(post.updatedAt, post.publishedAt),
       authors: [post.authorName],
       tags: post.tags,
       images,
@@ -61,20 +61,36 @@ export default async function BlogPostPage({ params }: PageProps<"/[locale]/blog
 
   const urls = postUrls(slug, post.hasVietnamese);
   const otherLocale = alternateLocale(locale);
+  const pageUrl = post.isFallback ? urls.en : urls[locale];
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "@id": `${urls[locale]}#article`,
-    mainEntityOfPage: urls[locale],
-    headline: post.title,
-    description: post.seoDescription,
-    image: post.coverImageUrl ?? `${SITE_URL}/opengraph-image`,
-    datePublished: post.publishedAt,
-    dateModified: post.updatedAt,
-    inLanguage: locale === "vi" && !post.isFallback ? "vi-CA" : "en-CA",
-    keywords: post.tags.join(", ") || undefined,
-    author: { "@type": "Organization", name: post.authorName, url: SITE_URL },
-    publisher: { "@id": `${SITE_URL}/#organization` },
+    "@graph": [
+      ORGANIZATION_JSON_LD,
+      {
+        "@type": "BlogPosting",
+        "@id": `${pageUrl}#article`,
+        mainEntityOfPage: pageUrl,
+        headline: post.title,
+        description: post.seoDescription,
+        image: post.coverImageUrl ?? `${SITE_URL}/opengraph-image`,
+        datePublished: post.publishedAt,
+        dateModified: latestIsoDate(post.updatedAt, post.publishedAt),
+        inLanguage: locale === "vi" && !post.isFallback ? "vi-CA" : "en-CA",
+        keywords: post.tags.join(", ") || undefined,
+        author: { "@type": "Organization", name: post.authorName, url: SITE_URL },
+        publisher: { "@id": ORGANIZATION_JSON_LD["@id"] },
+        isPartOf: { "@type": "Blog", "@id": `${SITE_URL}/${locale}/blog#blog` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/${locale}` },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/${locale}/blog` },
+          { "@type": "ListItem", position: 3, name: post.title, item: pageUrl },
+        ],
+      },
+    ],
   };
 
   return (

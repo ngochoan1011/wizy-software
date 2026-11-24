@@ -71,6 +71,25 @@ export function pageMetadata(locale: Locale): Metadata {
   };
 }
 
+/**
+ * Organization node for JSON-LD. Pages other than the landing page must embed it,
+ * otherwise `publisher: { "@id": ".../#organization" }` points at nothing.
+ */
+export const ORGANIZATION_JSON_LD = {
+  "@type": "Organization",
+  "@id": `${SITE_URL}/#organization`,
+  name: "Wizy",
+  alternateName: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}/wizy-mark.png`,
+  sameAs: ["https://www.wizy.ca"],
+} as const;
+
+/** Later of two ISO dates. Scheduled posts are edited before they go live, so updated_at can precede published_at. */
+export function latestIsoDate(a: string, b: string) {
+  return new Date(a).getTime() >= new Date(b).getTime() ? a : b;
+}
+
 export function serializeJsonLd(value: unknown) {
   return JSON.stringify(value).replace(/</g, "\\u003c");
 }

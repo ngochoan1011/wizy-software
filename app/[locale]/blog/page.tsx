@@ -5,7 +5,7 @@ import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { siteContent } from "@/content/site-content";
 import { blogIndexMetadata, formatPostDate } from "@/lib/blog-seo";
 import { alternateLocale, isLocale } from "@/lib/i18n";
-import { serializeJsonLd, SITE_URL } from "@/lib/seo";
+import { ORGANIZATION_JSON_LD, serializeJsonLd, SITE_URL } from "@/lib/seo";
 import { getPublishedPosts } from "@/lib/supabase/posts";
 
 // Posts are edited in the wizy.ca admin; refresh the static page every 5 minutes.
@@ -25,19 +25,24 @@ export default async function BlogIndexPage({ params }: PageProps<"/[locale]/blo
   const posts = await getPublishedPosts(locale);
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Blog",
-    "@id": `${SITE_URL}/${locale}/blog#blog`,
-    url: `${SITE_URL}/${locale}/blog`,
-    name: copy.title,
-    description: copy.description,
-    inLanguage: locale === "vi" ? "vi-CA" : "en-CA",
-    publisher: { "@id": `${SITE_URL}/#organization` },
-    blogPost: posts.slice(0, 20).map((post) => ({
-      "@type": "BlogPosting",
-      headline: post.title,
-      url: `${SITE_URL}/${locale}/blog/${post.slug}`,
-      datePublished: post.publishedAt,
-    })),
+    "@graph": [
+      ORGANIZATION_JSON_LD,
+      {
+        "@type": "Blog",
+        "@id": `${SITE_URL}/${locale}/blog#blog`,
+        url: `${SITE_URL}/${locale}/blog`,
+        name: copy.title,
+        description: copy.description,
+        inLanguage: locale === "vi" ? "vi-CA" : "en-CA",
+        publisher: { "@id": ORGANIZATION_JSON_LD["@id"] },
+        blogPost: posts.slice(0, 20).map((post) => ({
+          "@type": "BlogPosting",
+          headline: post.title,
+          url: `${SITE_URL}/${post.isFallback ? "en" : locale}/blog/${post.slug}`,
+          datePublished: post.publishedAt,
+        })),
+      },
+    ],
   };
 
   return (

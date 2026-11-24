@@ -119,7 +119,14 @@ export const getPublishedPost = cache(async (slug: string, locale: Locale): Prom
   return data ? localize(data as PostRow, locale) : null;
 });
 
-export async function getPublishedSlugs(): Promise<{ slug: string; updatedAt: string; hasVietnamese: boolean }[]> {
+export async function getPublishedSlugs(): Promise<
+  { slug: string; updatedAt: string; publishedAt: string; hasVietnamese: boolean }[]
+> {
   const posts = await getPublishedPosts("en");
-  return posts.map((post) => ({ slug: post.slug, updatedAt: post.updatedAt, hasVietnamese: post.hasVietnamese }));
+  return posts.map((post) => ({
+    slug: post.slug,
+    updatedAt: post.updatedAt,
+    publishedAt: post.publishedAt,
+    hasVietnamese: post.hasVietnamese,
+  }));
 }

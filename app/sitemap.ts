@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/seo";
+import { latestIsoDate, SITE_URL } from "@/lib/seo";
 import { getPublishedSlugs } from "@/lib/supabase/posts";
 
 const lastModified = new Date("2026-08-24T00:00:00-04:00");
@@ -35,7 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   }));
 
-  const posts = (await getPublishedSlugs()).flatMap(({ slug, updatedAt, hasVietnamese }) => {
+  const posts = (await getPublishedSlugs()).flatMap(({ slug, updatedAt, publishedAt, hasVietnamese }) => {
     const en = `${SITE_URL}/en/blog/${slug}`;
     const vi = `${SITE_URL}/vi/blog/${slug}`;
     const alternates = hasVietnamese
@@ -44,7 +44,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Vietnamese URLs without a translation canonicalize to English, so list them only when translated.
     return (hasVietnamese ? [en, vi] : [en]).map((url) => ({
       url,
-      lastModified: new Date(updatedAt),
+      lastModified: new Date(latestIsoDate(updatedAt, publishedAt)),
       changeFrequency: "monthly" as const,
       priority: 0.6,
       ...(alternates ? { alternates } : {}),

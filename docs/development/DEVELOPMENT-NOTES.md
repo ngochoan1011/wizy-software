@@ -102,3 +102,11 @@
 - A post is public when `status = 'published'` and `published_at <= now()`. Setting a future `published_at` on a published post schedules it; no cron job is needed because the index revalidates every 5 minutes and article pages and the sitemap read at request time.
 - `app/sitemap.ts` uses `dynamic = "force-dynamic"`. Metadata routes are cached by default in this Next.js version, and the build-time sitemap had stopped listing posts published after deploy.
 - Wizy Admin only sets `published_at` when a post has none, so editing a scheduled post keeps its date. "View on site" returns 404 until the scheduled time.
+
+## Blog AEO structured data (2026-11-24)
+
+- Article and blog index pages embed the Organization node in an `@graph`. Before, `publisher` pointed at `/#organization`, which only exists on the landing page.
+- Article pages add a `BreadcrumbList` and link the post to its `Blog` with `isPartOf`.
+- `dateModified`, `article:modified_time` and sitemap `lastmod` use the later of `updated_at` and `published_at`. Scheduled posts are edited before they go live, so `updated_at` was earlier than the publish date.
+- `/llms.txt` lists every published article (English link, excerpt, Vietnamese link when translated) and revalidates hourly, so scheduled posts appear on their date.
+- No `FAQPage` markup on articles: Google limits FAQ rich results to authoritative government and health sites, and the FAQ text is already in the HTML.

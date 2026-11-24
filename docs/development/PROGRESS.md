@@ -94,3 +94,11 @@ until the target project, migration and server-only credentials are available.
 - [x] ✅ Posts with a future `published_at` stay hidden from the index, article pages and sitemap until that time.
 - [x] ✅ Sitemap renders per request; the cached build-time version had frozen the post list.
 - [x] ✅ Batch 2 and 3 posts (20) scheduled one per day from 2026-11-18, ordered so each post goes live after the posts it links to.
+
+## Blog AEO fixes and batch 4 schedule (2026-11-24)
+
+- [x] ✅ Blog JSON-LD embeds the Organization node; articles add BreadcrumbList and `isPartOf` Blog.
+- [x] ✅ `dateModified`, `article:modified_time` and sitemap `lastmod` are never earlier than the publish date.
+- [x] ✅ `/llms.txt` lists published articles and revalidates hourly.
+- [x] ✅ Batch 4 posts (20) scheduled one per day 2026-12-08 → 2026-12-27, 14:00 UTC, ordered by link dependencies. Eight links between mutually linked pairs point one to four days ahead.
+- [ ] Submit the sitemap in Bing Webmaster Tools and confirm it in Search Console for the subdomain.

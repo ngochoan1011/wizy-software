@@ -80,20 +80,32 @@ Chạy trên ChatGPT, Perplexity, Google AI Overviews, ghi URL Wizy có được
 7. How do I reduce appointment no-shows at a small clinic?
 8. Is offshore software development cheaper for a Canadian business?
 
-## 5. Thứ tự đăng đề xuất (2 bài/tuần, 10 tuần)
+## 5. Lịch đăng (đã đặt lịch, 1 bài/ngày lúc 9:00 sáng giờ Toronto)
 
-1. Tuần 1: #1, #3 (hook mạnh nhất, mở cụm AI)
-2. Tuần 2: #4, #10
-3. Tuần 3: #2, #19
-4. Tuần 4: #14, #6
-5. Tuần 5: #5, #7
-6. Tuần 6: #20, #16
-7. Tuần 7: #8, #9
-8. Tuần 8: #11, #12
-9. Tuần 9: #15, #17
-10. Tuần 10: #13, #18
+Xếp theo thứ tự để bài lên sau những bài nó link tới. Tám cặp bài link qua lại lẫn nhau, nên mỗi cặp có một link chờ 1–4 ngày.
 
-Bài #3 và #4 link qua lại nhau, nên đăng cùng nhau hoặc #4 ngay sau #3. Tương tự #5 ↔ #6 ↔ #7, #11 ↔ #12.
+| Ngày | Bài |
+| --- | --- |
+| 08/12 | #1 Nhân viên dán dữ liệu khách vào ChatGPT |
+| 09/12 | #2 Lễ tân AI |
+| 10/12 | #14 Tài trợ Ontario |
+| 11/12 | #7 Chi phí chạy AI mỗi tháng |
+| 12/12 | #9 Demo và khách tham chiếu |
+| 13/12 | #15 Tiếng Pháp ở Quebec |
+| 14/12 | #13 Chi phí ẩn khi thuê nước ngoài |
+| 15/12 | #3 Tự làm app bằng AI |
+| 16/12 | #4 Checklist app làm bằng AI |
+| 17/12 | #8 No-code hay làm riêng |
+| 18/12 | #10 Vì sao vượt ngân sách |
+| 19/12 | #6 Dữ liệu sẵn sàng cho AI |
+| 20/12 | #5 Chatbot trả lời từ tài liệu |
+| 21/12 | #20 Chuyển đơn khỏi app chat |
+| 22/12 | #11 Chủ doanh nghiệp làm gì trong dự án |
+| 23/12 | #12 Biết dự án có đúng tiến độ |
+| 24/12 | #17 Kết nối QuickBooks/Xero |
+| 25/12 | #16 Nhận thanh toán |
+| 26/12 | #19 Giảm khách không đến |
+| 27/12 | #18 Phần mềm cho phòng khám |
 
 ## 6. Cần duyệt trước khi đăng
 
