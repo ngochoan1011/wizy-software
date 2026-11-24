@@ -1,7 +1,7 @@
 # Wizy Software Blog — Content Plan
 
 > Last updated: 2026-11-16
-> Status: 44 posts published, all with English and Vietnamese versions (Vietnamese added 2026-11-16).
+> Status: 44 posts published, 20 drafts (batch 4, 2026-11-23). All with English and Vietnamese versions.
 > Posts live in `public.software_posts` and are managed at `wizy.ca/vi/admin?tab=software-posts`.
 
 ## House format (AEO)
@@ -60,9 +60,12 @@ Decisions taken for batch 3:
 - #3 quotes the Ontario government's own page for thresholds and the WCAG level.
 - #1 lists clauses to ask about and is not legal advice.
 
+## Batch 4 — drafts added 2026-11-23 (20 posts)
+
+Research, AEO prompts, short-video hooks and publishing order: [marketing/batch-4-proposal.md](marketing/batch-4-proposal.md). Source files: [blog-batch-4/](blog-batch-4/). Clusters: AI in daily operations (7), buying and managing a project (6), Canadian rules and money (4), industries (3). Covers: `blog-media/covers/software-<slug>.jpg` (cremyX, Mr Hoan character, 1280×720), preview in `blog-batch-4/covers/contact-sheet.jpg`.
+
+Needs expert review before publishing: `employees-customer-data-chatgpt-policy`, `ontario-government-funding-software-digital-adoption`, `quebec-french-language-software-requirements`, `small-clinic-software-ontario`, `reduce-no-shows-reminders-deposits` (CASL).
+
 ## Backlog ideas
 
-- Clinic or dental practice software (alternative industry cluster).
-- No-code or low-code versus custom development.
-- How to run a vendor demo and reference check.
-- Bilingual (English/French) software requirements in Canada.
+- (Clinic software, no-code vs custom, vendor demo, EN/FR requirements: covered in batch 4.)
